@@ -25,9 +25,6 @@ const retrieveDOI = async (doi, subdir, outdir) => {
 
     const page = await browser.newPage();
 
-    await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36');
-    await page.setViewport({ width: 1366, height: 768 });
-
     log(chalk.magenta('🤖 Navigating...'));
 
     log(chalk.magenta(`🤖 Visiting: https://doi.org/${doi}`));
@@ -81,6 +78,7 @@ const retrieveFromTargetFile = async (targetFile, outdir) => {
         }
     } catch (err) {
         console.error(chalk.red("❌ Error processing target file:"), err);
+    }
 };
 
 // Ensure Chrome is running with: 
