@@ -52,6 +52,9 @@ const retrieveDOI = async (doi, subdir, outdir) => {
     await sleep(1000 * (Math.random() * 5));
 
     log(chalk.magenta('🤖 Done with DOI:', doi));
+
+    log(chalk.magenta(`🛑 Closing tab for DOI: ${doi}`));
+    await page.close();
 };
 
 const retrieveFromTargetFile = async (targetFile, outdir) => {
@@ -78,10 +81,6 @@ const retrieveFromTargetFile = async (targetFile, outdir) => {
         }
     } catch (err) {
         console.error(chalk.red("❌ Error processing target file:"), err);
-    } finally {
-        log(chalk.magenta(`🛑 Closing tab for DOI: ${doi}`));
-        await page.close();
-    }
 };
 
 // Ensure Chrome is running with: 
